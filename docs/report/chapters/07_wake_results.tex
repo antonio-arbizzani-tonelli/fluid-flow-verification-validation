@@ -1,0 +1,53 @@
+\section{Velocity-field characterisation of the cylinder wake}
+
+\subsection{Mean field}
+
+The time-averaged velocity magnitude and vectors are shown in Figure~\ref{fig:wake-mean}. The cylinder is represented by the masked circular region. Immediately downstream, the streamwise velocity decreases and a wake deficit develops around the centreline. The vectors also show transverse motion associated with the separated shear layers.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.88\linewidth]{wake_mean_velocity_field.pdf}
+    \caption{Mean dimensionless velocity magnitude and vectors at $Re_D\simeq9980$.}
+    \label{fig:wake-mean}
+\end{figure}
+
+The field is Reynolds-averaged over the available record. Since the PSV grid contains a substantial fraction of invalid samples near boundaries and regions of weak image correlation, spatial features supported by few valid vectors should not be overinterpreted. No spatial interpolation is used to fill the mean field.
+
+\subsection{Streamwise recovery}
+
+Figure~\ref{fig:wake-profiles} reports vertical profiles at four downstream positions. The near wake exhibits the strongest velocity deficit and the greatest cross-stream variation. The profiles become progressively smoother downstream, indicating momentum redistribution and wake recovery. The limited field of view does not extend far enough to establish a self-similar far-wake regime.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.74\linewidth]{wake_velocity_profiles.pdf}
+    \caption{Recovery of the mean streamwise velocity at selected downstream positions.}
+    \label{fig:wake-profiles}
+\end{figure}
+
+\subsection{Dominant unsteadiness}
+
+The selected probe is located at $(x/D,y/D)=(0.288,-0.057)$, the nearest valid grid point to the requested centreline position. Figure~\ref{fig:wake-spectrum} shows the transverse-velocity record and its one-sided spectrum. The dominant peak is $f_s=0.567$~Hz, giving
+\begin{equation}
+St=\frac{f_sD}{U_b}=0.204.
+\end{equation}
+This value is consistent with the periodic shedding expected behind a circular cylinder at the present Reynolds number, while confinement and the free surface distinguish the setup from an unbounded flow \cite{norberg2003}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.88\linewidth]{wake_probe_spectrum.pdf}
+    \caption{Transverse velocity at the wake probe and corresponding spectrum.}
+    \label{fig:wake-spectrum}
+\end{figure}
+
+\subsection{Vorticity sequence}
+
+Figure~\ref{fig:wake-vorticity} presents four frames separated by $90^\circ$ of the identified period. Alternating signed structures form downstream of the cylinder and are convected through the measurement region. The sequence provides a spatial counterpart to the spectral peak: the dominant frequency is associated with an organised alternating wake rather than with isolated measurement noise.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.93\linewidth]{wake_vorticity_phases.pdf}
+    \caption{Dimensionless vorticity at four phases of one shedding period.}
+    \label{fig:wake-vorticity}
+\end{figure}
+
+The derivative operation amplifies spatial noise, and the frames are not conditional ensemble averages. Consequently, the vorticity sequence is used to identify topology and phase progression, not to report peak vorticity values.

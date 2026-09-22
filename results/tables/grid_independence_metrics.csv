@@ -1,0 +1,13 @@
+FlowRegime,Refinement,GridPair,RelativeLinfError_percent
+Laminar,Radial,coarse-medium,2.3585986397632
+Laminar,Radial,medium-fine,0.520558259585782
+Laminar,Axial,coarse-medium,0.41239243765318
+Laminar,Axial,medium-fine,0.225335089221188
+Laminar,Combined,coarse-medium,1.43791318965727
+Laminar,Combined,medium-fine,0.924876887231455
+Turbulent,Radial,coarse-medium,0.842451910837046
+Turbulent,Radial,medium-fine,0.242261760049998
+Turbulent,Axial,coarse-medium,0.260128917295882
+Turbulent,Axial,medium-fine,0.132037270503384
+Turbulent,Combined,coarse-medium,0.625330038850023
+Turbulent,Combined,medium-fine,0.366174800894354

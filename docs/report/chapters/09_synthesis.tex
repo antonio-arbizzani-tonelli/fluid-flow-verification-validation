@@ -1,0 +1,33 @@
+\section{Synthesis and discussion}
+
+\subsection{What is verified and what is validated}
+
+The laminar case provides the strongest verification statement because both the local velocity profile and the global pressure gradient have analytical references. Their errors, $3.18\%$ and $1.24\%$, are consistent with a correct developed-flow solution and a discretisation error concentrated near the wall. Grid sensitivity below $1\%$ on the final refinement indicates that the remaining discrepancy is not dominated by gross under-resolution.
+
+The turbulent case is a validation problem. No analytical velocity profile exists, and the RANS closure introduces model-form error. The standard $k$--$\varepsilon$ configuration provides the most balanced result for the present data: it has the lowest profile RMSE and a Darcy factor within $0.082\%$ of the experimental reference. The close friction-factor agreement should not be viewed in isolation because integral wall friction can agree even when local profile features differ. Using both metrics reduces that ambiguity.
+
+The experimental analysis follows the same logic. Calibration establishes traceability from voltage to force before any fluid-mechanics coefficient is evaluated. PSV and force measurements then identify the same physical mechanism through different observables. The velocity field resolves the alternating wake spatially; the lift record resolves its integral loading signature.
+
+\subsection{Interpretation of the two Strouhal estimates}
+
+The measured Strouhal numbers are 0.204 from PSV and 0.181 from force data. The absolute difference is 0.023. Three factors prevent treating it as a measurement inconsistency:
+\begin{itemize}
+    \item the bulk velocity doubles between the two acquisitions;
+    \item the water depth changes from 0.42 to 0.45~m;
+    \item the estimators use a local transverse velocity and a span-integrated force, respectively.
+\end{itemize}
+Both values remain representative of periodic circular-cylinder shedding. A stricter cross-validation would require synchronous PSV and force acquisition at the same operating point, with a common clock and documented frequency resolution.
+
+\subsection{Limitations}
+
+The following limitations define the scope of the conclusions:
+\begin{itemize}
+    \item pairwise grid differences are reported instead of a formal asymptotic GCI;
+    \item the turbulent near-wall grid cannot be reconstructed completely from the compact exports;
+    \item the uncertainty of the reference pipe-flow profiles is not included in the turbulence-model ranking;
+    \item the PSV field contains missing vectors and the phase sequence is not ensemble averaged;
+    \item the uncertainty budget is first order and excludes blockage, free-surface deformation, end effects, and alignment;
+    \item the cylinder datasets correspond to different operating points and are not synchronous.
+\end{itemize}
+
+These restrictions define the range of the conclusions: agreement with the selected benchmarks and consistent identification of the dominant wake dynamics.

@@ -1,0 +1,60 @@
+\section{Cylinder-force results}
+
+\subsection{Mean forces}
+
+Figure~\ref{fig:cylinder-forces} shows the measured drag and buoyancy-corrected lift. The mean values are $\overline{F_D}=0.9223$~N and $\overline{F_L}=-0.0172$~N, giving
+\begin{equation}
+\overline{C_D}=1.4987, \qquad \overline{C_L}=-0.0280.
+\end{equation}
+The non-zero mean lift is small compared with the drag but cannot be interpreted as evidence of a physical asymmetry by itself. Its magnitude is comparable with the propagated lift uncertainty and remains sensitive to buoyancy subtraction, water-level mismatch, and alignment.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.88\linewidth]{cylinder_forces.pdf}
+    \caption{Drag and buoyancy-corrected lift in flowing water.}
+    \label{fig:cylinder-forces}
+\end{figure}
+
+\subsection{Force spectrum}
+
+The lift spectrum in Figure~\ref{fig:lift-spectrum} contains a dominant peak at $f_s=1.006$~Hz. With $U_b=0.3333$~m/s and $D=0.06$~m, this gives $St=0.181$. Lift is used because alternating vortex shedding produces a direct cross-stream forcing signature, whereas drag primarily responds at the mean and at even harmonics.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.74\linewidth]{cylinder_lift_spectrum.pdf}
+    \caption{One-sided amplitude spectrum of the corrected lift signal.}
+    \label{fig:lift-spectrum}
+\end{figure}
+
+The peak is narrow relative to the surrounding spectrum, supporting a coherent periodic component. Its Strouhal number is $11.3\%$ below the PSV estimate, but the two acquisitions have different bulk velocities and water depths. Agreement should therefore be judged at the level of the shedding regime, not as a repeated measurement of a single operating point.
+
+\subsection{Uncertainty budget}
+
+First-order propagation gives standard uncertainties $u(C_D)=0.0756$ and $u(C_L)=0.0574$. The relative standard uncertainty of mean drag is approximately $5.0\%$. For mean lift, a relative percentage is not informative because the measured mean is close to zero. Figure~\ref{fig:force-uncertainty} shows the variance contributions. Force measurement dominates both coefficients; velocity uncertainty is the next relevant contribution to drag because both coefficients scale with $U_b^{-2}$.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.80\linewidth]{cylinder_force_uncertainty.pdf}
+    \caption{Contributions to the propagated variance of the force coefficients.}
+    \label{fig:force-uncertainty}
+\end{figure}
+
+A 2~mm mismatch in the water level between the still-water and flow acquisitions would change $C_L$ by approximately 0.0229. This systematic scenario is of the same order as $\overline{C_L}$ and confirms that the present experiment supports a near-zero mean lift rather than a resolved non-zero bias.
+
+\begin{table}[htbp]
+\centering
+\caption{Principal cylinder results at the two operating conditions.}
+\label{tab:cylinder-summary}
+\begin{tabular}{lcc}
+\toprule
+Quantity & PSV acquisition & Force acquisition \\
+\midrule
+$U_b$ [m/s] & 0.1667 & 0.3333 \\
+$Re_D$ & 9980 & --- \\
+$f_s$ [Hz] & 0.567 & 1.006 \\
+$St$ & 0.204 & 0.181 \\
+$\overline{C_D}$ & --- & 1.499 \\
+$\overline{C_L}$ & --- & $-0.028$ \\
+\bottomrule
+\end{tabular}
+\end{table}

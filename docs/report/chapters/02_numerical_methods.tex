@@ -1,0 +1,48 @@
+\section{Numerical methodology}
+
+\subsection{Flow configurations}
+
+The internal-flow calculations were performed in an axisymmetric representation of a circular pipe. The laminar case uses $D=0.15$~m, $W_b=0.45$~m/s, $\rho=910$~kg/m$^3$, and $\nu=3.5\times10^{-4}$~m$^2$/s, giving
+\begin{equation}
+Re_b=\frac{W_bD}{\nu}=192.9.
+\end{equation}
+The turbulent case uses $D=0.10$~m, $W_b=0.75$~m/s, and $\nu=10^{-6}$~m$^2$/s, hence $Re_b=75{,}000$. The simulations were performed with PHOENICS. The calculated fields include velocity, pressure, wall stress, eddy viscosity, turbulent kinetic energy, and dissipation rate.
+
+Four turbulent configurations are retained: standard $k$--$\varepsilon$, RNG $k$--$\varepsilon$, realisable $k$--$\varepsilon$, and a low-Reynolds-number $k$--$\varepsilon$ treatment. The comparison is specific to the implemented grids and wall treatments; it is not intended as a general ranking of the closures \cite{launder1974}.
+
+\subsection{Grid-sensitivity procedure}
+
+Three refinement paths are considered for each regime. Radial refinement changes the number of cells across the radius, axial refinement changes the streamwise resolution, and combined refinement changes both. Profiles are extracted at $z\simeq0.8L$ for the radial and combined sequences. Axial refinement is assessed from the pressure distribution at approximately half radius.
+
+For successive grids $i$ and $i+1$, the reported indicator is
+\begin{equation}
+\epsilon_{i,i+1}=\frac{\left\|\phi_i^{\,\mathrm{int}}-\phi_{i+1}\right\|_\infty}
+{\left\|\phi_{i+1}\right\|_\infty},
+\end{equation}
+where the coarser result is linearly interpolated to the finer coordinates. This is a transparent pairwise sensitivity measure. It is not a formal Grid Convergence Index because the available grids do not define a uniform refinement ratio for all directions.
+
+\subsection{Developed-flow and pressure-loss estimators}
+
+The last interior velocity profile is used as the developed reference. At each axial station,
+\begin{equation}
+\epsilon_p(z)=\frac{\|W(r,z)-W_{\mathrm{ref}}(r)\|_\infty}
+{\|W_{\mathrm{ref}}(r)\|_\infty}.
+\end{equation}
+The numerical development length is the first station at which $\epsilon_p\leq10^{-3}$. This stringent threshold should be read as an operational definition tied to the sampled grid.
+
+For the laminar case, the area-weighted mean pressure is
+\begin{equation}
+\overline{p}(z)=\frac{2}{R^2}\int_0^R p(r,z)r\,\mathrm{d}r.
+\end{equation}
+A least-squares line fitted to the last developed stations gives the numerical pressure gradient. The reference values are the Poiseuille profile and pressure gradient,
+\begin{equation}
+\frac{W(r)}{W_b}=2\left[1-\left(\frac{r}{R}\right)^2\right],
+\qquad
+\frac{\mathrm{d}p}{\mathrm{d}z}=-\frac{32\mu W_b}{D^2}.
+\end{equation}
+
+For the turbulent case, the Darcy friction factor is obtained from the computed wall stress,
+\begin{equation}
+f=\frac{8\tau_w}{\rho W_b^2},
+\end{equation}
+and compared with the experimental value, the smooth-pipe Prandtl relation, and the Haaland expression \cite{haaland1983}. Velocity-profile error is measured by the RMSE after interpolating the CFD profile to the experimental radial coordinates.

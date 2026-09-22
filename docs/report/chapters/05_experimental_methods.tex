@@ -1,0 +1,34 @@
+\section{Experimental methodology}
+
+\subsection{Load-cell calibration}
+
+Sixteen static reference loads span approximately $-10.5$ to $13.8$~N and include both loading directions. Each voltage acquisition is sampled at 100~Hz. The steady response is defined as the mean of the final $30\%$ of the record. A linear transfer relation is fitted in the voltage domain,
+\begin{equation}
+V=S F+V_0,
+\end{equation}
+where $S$ is the sensitivity and $V_0$ the zero-load offset. Residuals are then mapped back to force units.
+
+Stability is assessed from the cumulative mean. The signal is classified as stable when the cumulative mean remains within $2\%$ of a normalisation scale based on the final level and the signal range. This metric is intentionally operational: it detects the time after which the estimate no longer leaves the acceptance band, but it is not a dynamic model of the transducer.
+
+\subsection{Particle-shadow velocimetry}
+
+The wake dataset contains 1499 displacement fields on a $23\times30$ grid sampled at 50~Hz. Pixel displacements are converted to velocity using the spatial resolution of 3040~px/m. Coordinates are translated to the cylinder reference frame and normalised by $D=0.06$~m. For a channel width of $0.50$~m, water depth of $0.42$~m, and flow rate of 35~L/s,
+\begin{equation}
+U_b=0.1667\ \mathrm{m/s}, \qquad Re_D=\frac{U_bD}{\nu}=9.98\times10^3.
+\end{equation}
+
+Invalid vectors are omitted in the time average. The cylinder interior is masked before plotting. The spectral probe is selected as the valid grid point nearest to $(x/D,y/D)=(0.25,0)$; missing samples are linearly interpolated in time. The dominant peak is searched between 0.2 and 10~Hz to exclude the mean component and high-frequency noise. Four vorticity snapshots separated by one quarter of the identified period provide a phase-resolved representation of the shedding cycle. These phases originate from a moving-average filtered sequence and should be interpreted qualitatively rather than as an ensemble phase average \cite{raffel2018}.
+
+\subsection{Force measurements}
+
+The force experiment uses a channel width of $0.50$~m, water depth of $0.45$~m, flow rate of 75~L/s, cylinder diameter of $0.06$~m, and instrumented span of $0.185$~m. The bulk velocity is $U_b=0.3333$~m/s. A still-water record provides the vertical buoyancy offset. After correction,
+\begin{equation}
+C_D=\frac{F_D}{\tfrac12\rho U_b^2DL}, \qquad
+C_L=\frac{F_L}{\tfrac12\rho U_b^2DL}.
+\end{equation}
+
+The one-sided Fourier amplitude is obtained after removing the signal mean. The dominant non-zero lift peak gives $f_s$ and $St=f_sD/U_b$. The acquisition is sampled at 200~Hz.
+
+\subsection{First-order uncertainty propagation}
+
+Standard uncertainties assigned to the measurement chain are 0.045~N for drag, 0.025~N for each vertical-force contribution, 1~mm for depth and channel width, 0.05~mm for cylinder diameter, and 1~mm for span. Flow-rate uncertainty combines a $0.5\%$ relative contribution with the effect of a 1~mm head uncertainty in the 0.20~m meter pipe. Independent contributions are propagated with a root-sum-of-squares approximation. The resulting values quantify the stated instrument model; they do not include model-form errors due to free-surface deformation, blockage, end effects, or imperfect alignment.

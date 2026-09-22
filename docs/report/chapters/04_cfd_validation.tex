@@ -1,0 +1,77 @@
+\section{Turbulent CFD validation}\label{sec:turbulent-validation}
+
+\subsection{Grid sensitivity and streamwise development}
+
+The turbulent grid study in Figure~\ref{fig:turbulent-grid} gives smaller pairwise differences than the laminar study. Medium-to-fine changes are $0.24\%$, $0.13\%$, and $0.37\%$ for radial, axial, and combined refinement, respectively. These values support the use of the retained grids for model comparison, while remaining conditional on the chosen observables.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{turbulent_grid_independence.pdf}
+    \caption{Turbulent-flow grid study: radial velocity, axial pressure, and combined refinement.}
+    \label{fig:turbulent-grid}
+\end{figure}
+
+The correlation $L_e=1.359DRe^{1/4}$ gives $2.249$~m. The full-profile $0.1\%$ criterion is first satisfied at $z=9.85$~m, close to the final interior station. Figure~\ref{fig:turbulent-development} explains the difference: the centreline velocity reaches an approximately stable level earlier, whereas the full radial profile continues to change weakly. The result illustrates the sensitivity of a turbulent entry length to its definition.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.84\linewidth]{turbulent_flow_development.pdf}
+    \caption{Centreline-velocity development and axial pressure decrease for the standard $k$--$\varepsilon$ case.}
+    \label{fig:turbulent-development}
+\end{figure}
+
+\subsection{Resolved mean and turbulence fields}
+
+Figure~\ref{fig:turbulent-structure} collects the fully developed mean velocity, eddy-viscosity ratio, turbulent kinetic energy, and dissipation rate. The mean profile is flatter than the laminar parabola. Turbulent quantities increase towards the wall region, consistent with shear production, while the centreline symmetry is retained.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.94\linewidth]{turbulent_structure_profiles.pdf}
+    \caption{Radial structure of the standard $k$--$\varepsilon$ solution in the developed region.}
+    \label{fig:turbulent-structure}
+\end{figure}
+
+The wall stress gives $u_\tau=0.03654$~m/s. Figure~\ref{fig:wall-scaling} compares the computed inner-scaled velocity with the viscous and logarithmic reference laws. The maximum plotted $y^+$ is approximately $1699$ because it corresponds to the distance from the wall to the pipe axis; it is not the first-cell wall coordinate. The profile crosses the expected logarithmic range but the near-wall assessment remains limited by the available cell-centre sampling.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.70\linewidth]{turbulent_wall_scaling.pdf}
+    \caption{Wall-scaled axial velocity for the standard $k$--$\varepsilon$ case.}
+    \label{fig:wall-scaling}
+\end{figure}
+
+\subsection{Model comparison}
+
+Figure~\ref{fig:turbulent-profiles} compares the four numerical profiles with two experimental series. All closures reproduce the main shape. The standard model gives the lowest normalised profile RMSE, $0.0158$, followed by RNG ($0.0166$), realisable ($0.0195$), and low-Re ($0.0214$).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.76\linewidth]{turbulent_pipe_validation.pdf}
+    \caption{Turbulent velocity profiles and experimental measurements at $Re_b=75{,}000$.}
+    \label{fig:turbulent-profiles}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Turbulence-model validation metrics.}
+\label{tab:turbulent-models}
+\begin{tabular}{lrrr}
+\toprule
+Model & $f$ & $|f-f_{\mathrm{exp}}|/f_{\mathrm{exp}}$ [\%] & Profile RMSE \\
+\midrule
+Standard $k$--$\varepsilon$ & 0.018984 & 0.082 & 0.01584 \\
+RNG $k$--$\varepsilon$ & 0.018403 & 3.143 & 0.01659 \\
+Realisable $k$--$\varepsilon$ & 0.017853 & 6.035 & 0.01948 \\
+Low-Re $k$--$\varepsilon$ & 0.021688 & 14.148 & 0.02144 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The experimental Darcy factor is $0.0190$. The smooth-pipe Prandtl and Haaland values are $0.01912$ and $0.01895$, respectively. Figure~\ref{fig:friction-comparison} shows that the standard model is also closest to all three references. The low-Re configuration overpredicts wall friction in the present implementation; this is consistent with a mismatch between a wall-resolving formulation and the available near-wall resolution rather than with an intrinsic failure of the closure.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.80\linewidth]{turbulent_friction_factor_comparison.pdf}
+    \caption{Darcy friction factors from the RANS solutions, experiment, and smooth-pipe correlations.}
+    \label{fig:friction-comparison}
+\end{figure}

@@ -1,0 +1,69 @@
+\section{Laminar CFD verification}
+
+\subsection{Grid sensitivity}
+
+Figure~\ref{fig:laminar-grid} reports the three refinement paths. The velocity profiles and pressure distributions approach a stable result without changes in shape or non-physical oscillations. The relative $L_\infty$ changes are summarised in Table~\ref{tab:grid-errors}. Radial sensitivity decreases from $2.36\%$ to $0.52\%$, while axial sensitivity decreases from $0.41\%$ to $0.23\%$. The combined medium-to-fine difference remains below $1\%$.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{laminar_grid_independence.pdf}
+    \caption{Laminar-flow grid study: radial velocity, axial pressure, and combined refinement.}
+    \label{fig:laminar-grid}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Successive-grid relative $L_\infty$ differences.}
+\label{tab:grid-errors}
+\begin{tabular}{llrr}
+\toprule
+Regime & Direction & coarse--medium [\%] & medium--fine [\%] \\
+\midrule
+Laminar & radial & 2.359 & 0.521 \\
+Laminar & axial & 0.412 & 0.225 \\
+Laminar & combined & 1.438 & 0.925 \\
+Turbulent & radial & 0.842 & 0.242 \\
+Turbulent & axial & 0.260 & 0.132 \\
+Turbulent & combined & 0.625 & 0.366 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The finest solutions are retained for the following comparisons. The table also anticipates the turbulent results discussed in Section~\ref{sec:turbulent-validation}. Since the errors are defined from different observables for radial and axial refinements, magnitudes should only be compared within the same direction.
+
+\subsection{Hydrodynamic development}
+
+The usual laminar estimate $L_e=0.0575ReD$ gives $1.663$~m. The $0.1\%$ profile criterion gives a numerical development length of $2.113$~m. Figure~\ref{fig:laminar-development} shows that the centreline velocity tends towards $2W_b$, while the complete profile approaches the final reference monotonically.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.90\linewidth]{laminar_flow_development.pdf}
+    \caption{Laminar development based on the centreline velocity and the distance from the final profile.}
+    \label{fig:laminar-development}
+\end{figure}
+
+The numerical value is $27\%$ larger than the correlation estimate. This discrepancy is compatible with the strict full-profile threshold, the discrete axial sampling, and the fact that engineering entry-length correlations generally rely on less restrictive local criteria. The important result is not exact equality between the two definitions, but the correct asymptotic state and a documented selection rule.
+
+\subsection{Fully developed profile}
+
+The bulk velocity reconstructed from the final CFD profile is $0.4523$~m/s, within $0.51\%$ of the imposed value. Figure~\ref{fig:laminar-profile} compares the normalised solution with the analytical parabola. The relative $L_\infty$ profile error is $3.18\%$. The largest visible discrepancy is confined to the outer part of the profile, where spatial resolution and the discrete wall treatment have the strongest effect.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.72\linewidth]{laminar_pipe_verification.pdf}
+    \caption{Fully developed laminar velocity profile against the Poiseuille solution.}
+    \label{fig:laminar-profile}
+\end{figure}
+
+\subsection{Pressure gradient}
+
+The analytical gradient is $-203.84$~Pa/m. Linear regression over the last developed stations gives $-201.32$~Pa/m, corresponding to a relative error of $1.24\%$. Figure~\ref{fig:laminar-pressure} also confirms that the pressure becomes linear once the inlet development is complete.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.76\linewidth]{laminar_pressure_gradient.pdf}
+    \caption{Area-weighted pressure and linear fit in the developed region.}
+    \label{fig:laminar-pressure}
+\end{figure}
+
+The agreement of both profile shape and pressure loss is more informative than agreement in either quantity alone. The first checks the velocity field; the second checks the integral momentum balance and the wall shear implied by the solution.

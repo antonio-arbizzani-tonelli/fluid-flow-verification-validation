@@ -1,0 +1,38 @@
+\section{Measurement-chain calibration}
+
+\subsection{Static transfer function}
+
+The fitted sensitivity is $S=-4.07807\times10^{-4}$~V/N and the offset is $V_0=-2.86673\times10^{-5}$~V. The sign follows the electrical convention of the acquisition system. Figure~\ref{fig:load-calibration} shows no evident change in slope between positive and negative loads.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.74\linewidth]{load_cell_calibration.pdf}
+    \caption{Static load-cell calibration from sixteen reference loads.}
+    \label{fig:load-calibration}
+\end{figure}
+
+The coefficient of determination is $R^2=0.9999988$. In force units, the RMSE is 0.00572~N and the maximum absolute residual is 0.01398~N. A two-standard-deviation residual estimate computed with $n-2$ degrees of freedom is 0.01223~N. These values are small relative to the reference-load range, but the residual distribution remains relevant because the mean lift measured on the cylinder is also small.
+
+\subsection{Residual structure}
+
+Figure~\ref{fig:calibration-residuals} shows that the residuals do not increase systematically with load magnitude. The largest deviation occurs near $-0.411$~N. The absence of a clear curvature supports the use of a linear transfer function over the investigated interval.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.76\linewidth]{load_cell_residuals.pdf}
+    \caption{Calibration residuals after conversion to force units.}
+    \label{fig:calibration-residuals}
+\end{figure}
+
+\subsection{Estimator stability}
+
+Figure~\ref{fig:load-stability} reports representative cumulative means. Large reference loads stabilise rapidly because the signal level is high relative to drift and noise. Tests close to zero require longer records; the maximum operational stabilisation time is 25.99~s. This result justifies estimating the calibration voltage from the final $30\%$ rather than from the complete transient record.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.94\linewidth]{load_cell_stability.pdf}
+    \caption{Convergence of the cumulative voltage estimate for four representative calibration tests.}
+    \label{fig:load-stability}
+\end{figure}
+
+The calibration therefore supports two distinct statements. The static relation is strongly linear, while near-zero measurements remain sensitive to settling and offset estimation. This distinction is retained when interpreting the mean lift coefficient.

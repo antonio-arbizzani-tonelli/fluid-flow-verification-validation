@@ -1,0 +1,29 @@
+\section{Scope and validation strategy}
+
+The study combines numerical and experimental evidence for two canonical fluid-mechanics problems. Pipe flow provides analytical relations and established friction laws for the assessment of CFD calculations. The circular cylinder provides a separated, unsteady flow for which local velocity measurements and integral force measurements offer complementary descriptions.
+
+The work is organised as an evidence chain rather than as a sequence of independent exercises:
+\begin{enumerate}
+    \item establish numerical resolution through controlled grid refinements;
+    \item verify the laminar calculation against the Poiseuille solution and the analytical pressure gradient;
+    \item validate turbulent closures against measured profiles and an experimental friction factor;
+    \item calibrate the force transducer and quantify the residual measurement error;
+    \item identify the cylinder wake from velocity fields and force records;
+    \item compare the independent shedding-frequency estimates and retain the limitations of the comparison.
+\end{enumerate}
+
+Verification is used here in the strict sense of assessing whether the numerical formulation and post-processing reproduce a known solution. Validation instead assesses agreement with measurements. Grid sensitivity is reported separately from both: convergence between successive grids is necessary, but it does not demonstrate physical accuracy by itself \cite{celik2008}.
+
+The pipe-flow and cylinder datasets do not constitute a single coupled experiment. The geometries and operating conditions are different, and the two cylinder acquisitions were performed at different flow rates and water depths. Their connection lies in the common use of reference quantities and quantitative error measures.
+
+\subsection{Objectives}
+
+The analysis considers:
+\begin{itemize}
+    \item mesh-sensitivity metrics for laminar and turbulent pipe flows;
+    \item hydrodynamic entry lengths, developed profiles, and pressure-loss estimates;
+    \item a comparison of four $k$--$\varepsilon$ configurations at $Re_b=75{,}000$;
+    \item calibration coefficients, stability times, and force residuals for sixteen loads;
+    \item mean wake fields, velocity-deficit profiles, vorticity phases, and a probe spectrum;
+    \item mean force coefficients, a lift spectrum, and a first-order uncertainty budget.
+\end{itemize}
