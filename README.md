@@ -9,8 +9,8 @@ This repository collects a numerical study of laminar and turbulent pipe flow an
 - `config/cfd/` contains the PHOENICS case configurations.
 - `data/` contains selected CFD exports and experimental measurements used by the scripts.
 - `results/tables/` contains numerical summaries in CSV and LaTeX formats.
-- `results/figures/` contains the vector figures used by the technical report.
-- `docs/report/` contains the LaTeX source and chapter files.
+- [Complete technical report (PDF)](docs/report/technical_report.pdf).
+- `docs/report/` contains the report's LaTeX source and chapter files.
 - `presentation/` contains the project deck in PowerPoint and PDF formats.
 - `tests/` contains a test for the shared one-sided FFT utility.
 
@@ -41,15 +41,16 @@ MATLAB R2024b or a compatible release is required. From the repository root, run
 run('scripts/run_all.m')
 ```
 
-The scripts regenerate the figures and numerical tables from the included data. PNG figure exports are useful for local inspection and are excluded from the repository; the vector PDF figures remain available for the LaTeX report.
+The scripts regenerate the figures and numerical tables from the included data. Figure exports (PDF and PNG) are local build products and are excluded from the repository. The complete report PDF is included so it can be read without MATLAB.
 
-To compile the report, create `build/report/` and run `pdflatex` twice from `docs/report/`:
+To rebuild the report, first run the MATLAB workflow above so it recreates the figure PDFs under `results/figures/`. Then create `build/report/` at the repository root and run `pdflatex` twice from `docs/report/`:
 
 ```text
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../../build/report main.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../../build/report main.tex
 ```
 
-The report source and its chapter files are in `docs/report/`. Compilation requires a LaTeX distribution with the packages listed in `main.tex`.
+The regenerated PDF will be `build/report/main.pdf`; copy it to `docs/report/technical_report.pdf` to update the published report. Compilation requires a LaTeX distribution with the packages listed in `docs/report/main.tex`. See [`docs/report/README.md`](docs/report/README.md) for the full procedure.
 
 ## Data and software
 

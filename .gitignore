@@ -17,11 +17,13 @@ codegen/
 
 # Local build folders
 .build/
+/build/
 .codex-finalizer/
 tmp/
 
-# Raster previews are generated locally; vector PDFs remain versioned for the report
+# Figure exports are generated locally; only the complete report is versioned
 /results/figures/*.png
+/results/figures/*.pdf
 
 # Microsoft Office temporary files
 ~$*.pptx
