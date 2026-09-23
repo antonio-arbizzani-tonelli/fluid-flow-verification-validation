@@ -1,6 +1,6 @@
 # Verification and validation of canonical fluid flows
 
-This repository collects a numerical study of laminar and turbulent pipe flow and an experimental study of a circular-cylinder wake. The workflow links CFD verification and validation with calibration, velocity-field analysis, force measurements and uncertainty estimates.
+This repository collects a numerical study of laminar and turbulent pipe flow and an experimental study of a circular-cylinder wake. The workflow links CFD verification and validation with calibration, velocity-field analysis, force measurements and uncertainty estimates. Additional sensitivity checks assess the low-Reynolds-number solution and the spatial support for the PSV shedding frequency.
 
 ## Project files
 
@@ -28,10 +28,13 @@ This repository collects a numerical study of laminar and turbulent pipe flow an
 | Load-cell calibration | R² = 0.999999; force RMSE: 5.72 mN |
 | Turbulent pipe | Re_b = 75,000 |
 | Standard k-epsilon friction factor | Relative error: 0.082% against the selected reference |
+| Low-Reynolds-number closure | Radial profile changes are non-monotonic; grid independence is not established |
 | Cylinder drag coefficient | Mean C_D = 1.499 |
 | Wake Strouhal numbers | 0.204 from PSV; 0.181 from force measurements |
+| PSV spatial spectral check | 59 of 690 grid points meet the 95% data-availability criterion; median St = 0.204 |
+| Calibration leave-one-out check | Fitted sensitivity changes by less than 0.04% when one load is omitted |
 
-The two Strouhal estimates come from different operating conditions and are not repeated measurements of the same point.
+The two Strouhal estimates come from different operating conditions and are not repeated measurements of the same point. The spatial PSV values are limited by the finite-record frequency resolution; isolated higher bins are not interpreted as a spatial gradient.
 
 ## Reproduce the analyses
 

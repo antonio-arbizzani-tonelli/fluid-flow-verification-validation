@@ -6,7 +6,11 @@ The laminar case provides the strongest verification statement because both the 
 
 The turbulent case is a validation problem. No analytical velocity profile exists, and the RANS closure introduces model-form error. The standard $k$--$\varepsilon$ configuration provides the most balanced result for the present data: it has the lowest profile RMSE and a Darcy factor within $0.082\%$ of the experimental reference. The close friction-factor agreement should not be viewed in isolation because integral wall friction can agree even when local profile features differ. Using both metrics reduces that ambiguity.
 
+The low-Reynolds-number closure requires a more cautious reading. Its four-mesh profile differences are non-monotonic, and its turbulence quantities continue to change between the available iteration exports. The friction-factor discrepancy can therefore not be attributed uniquely to closure behaviour or near-wall resolution from the present evidence. The limited spacing-exponent comparison shows small changes in the selected mean profile, but it does not close this verification gap.
+
 The experimental analysis follows the same logic. Calibration establishes traceability from voltage to force before any fluid-mechanics coefficient is evaluated. PSV and force measurements then identify the same physical mechanism through different observables. The velocity field resolves the alternating wake spatially; the lift record resolves its integral loading signature.
+
+For the PSV acquisition, a spatial scan of local spectra recovers the probe Strouhal number at most grid points that satisfy the data-availability criterion. Its peak distribution remains quantised by the finite-record frequency resolution, so the scan is used as a consistency check rather than evidence of a spatially varying shedding frequency. The load-cell slope also remains stable under single-point omission, while this check does not address settling or reference-mass uncertainty.
 
 \subsection{Interpretation of the two Strouhal estimates}
 

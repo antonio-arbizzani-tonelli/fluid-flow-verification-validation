@@ -69,6 +69,35 @@ Low-Re $k$--$\varepsilon$ & 0.021688 & 14.148 & 0.02144 \\
 
 The experimental Darcy factor is $0.0190$. The smooth-pipe Prandtl and Haaland values are $0.01912$ and $0.01895$, respectively. Figure~\ref{fig:friction-comparison} shows that the standard model is also closest to all three references. The low-Re configuration overpredicts wall friction in the present implementation; this is consistent with a mismatch between a wall-resolving formulation and the available near-wall resolution rather than with an intrinsic failure of the closure.
 
+\subsection{Low-Reynolds-number resolution sensitivity}
+
+The low-Reynolds-number case was examined separately because its friction-factor discrepancy is larger than that of the other closures. Four radial meshes, with $N_y=35$, 45, 60, and 75 cells, were compared using the developed-region velocity profile at $z/L\simeq0.8$. The successive relative $L_\infty$ changes are $1.10\%$, $0.55\%$, and $3.15\%$. The final change is not smaller than the preceding one; the sequence therefore does not establish monotonic convergence or grid independence for this observable.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.82\linewidth]{low_re_grid_sensitivity.pdf}
+    \caption{Developed-region low-Reynolds-number profiles for four radial meshes.}
+    \label{fig:low-re-grid}
+\end{figure}
+
+The three solver exports available on the $N_y=45$ mesh permit a complementary iteration-sensitivity check. From 500 to 750 iterations, the relative $L_\infty$ changes are $0.96\%$ in axial velocity, $1.89\%$ in pressure, $4.58\%$ in turbulent kinetic energy, $6.54\%$ in dissipation rate, and $12.30\%$ in eddy viscosity. From 750 to 1000 iterations, they decrease to $0.23\%$, $0.33\%$, $1.19\%$, $3.03\%$, and $4.05\%$, respectively. The mean-flow fields change less than the turbulence quantities at the final iteration interval, but the latter have not reached a demonstrated asymptote.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.84\linewidth]{low_re_iteration_sensitivity.pdf}
+    \caption{Relative field changes between successive low-Reynolds-number solver exports.}
+    \label{fig:low-re-iterations}
+\end{figure}
+
+An additional comparison varies the radial-spacing exponent while keeping the nominal radial cell count fixed at 11. The profile changes are $0.66\%$ between $p=-1.5$ and $p=-1.8$, and $0.37\%$ between $p=-1.8$ and $p=-2.0$. This supports limited sensitivity to the tested spacing choices, but it does not resolve the non-monotonic cell-count study or the remaining turbulence-field iteration changes.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.78\linewidth]{power_y_stretching_sensitivity.pdf}
+    \caption{Low-Reynolds-number profiles for three radial-spacing exponents at fixed nominal cell count.}
+    \label{fig:low-re-spacing}
+\end{figure}
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.80\linewidth]{turbulent_friction_factor_comparison.pdf}

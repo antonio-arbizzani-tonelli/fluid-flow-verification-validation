@@ -39,6 +39,17 @@ This value is consistent with the periodic shedding expected behind a circular c
     \label{fig:wake-spectrum}
 \end{figure}
 
+The same spectral estimator was applied to all grid points outside the cylinder. To limit sensitivity to missing vectors, a local spectrum was retained only when at least $95\%$ of the 1499 samples were available; this criterion leaves 59 of the 690 grid points. The median local value is $St=0.204$, and 43 of the 59 eligible points have a dominant peak at this value. The remaining peaks occur at $St=0.216$ (14 points), $0.228$ (one point), and $0.288$ (one point).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.84\linewidth]{wake_spatial_strouhal.pdf}
+    \caption{Local dominant Strouhal number at PSV grid points meeting the 95\% data-availability criterion.}
+    \label{fig:wake-spatial-strouhal}
+\end{figure}
+
+The record duration gives a frequency-bin spacing of approximately $0.033$~Hz, corresponding to $\Delta St\simeq0.012$ at the present $D/U_b$. The discrete peak values are therefore resolution-limited; isolated higher values should not be interpreted as a resolved spatial gradient in shedding frequency. The spatial map supports the selected-probe estimate as the dominant frequency over most eligible locations, but does not replace a longer, spatially conditional measurement.
+
 \subsection{Vorticity sequence}
 
 Figure~\ref{fig:wake-vorticity} presents four frames separated by $90^\circ$ of the identified period. Alternating signed structures form downstream of the cylinder and are convected through the measurement region. The sequence provides a spatial counterpart to the spectral peak: the dominant frequency is associated with an organised alternating wake rather than with isolated measurement noise.

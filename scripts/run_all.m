@@ -7,6 +7,7 @@ repoRoot = fileparts(fileparts(mfilename('fullpath')));
 addpath(genpath(fullfile(repoRoot, 'src', 'matlab')));
 
 run_grid_independence_studies();
+run_low_re_sensitivity_analysis();
 run_laminar_development_analysis();
 run_pipe_validation();
 run_turbulent_structure_analysis();

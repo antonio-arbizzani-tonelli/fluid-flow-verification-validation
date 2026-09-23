@@ -105,6 +105,27 @@ exportgraphics(gcf, fullfile(figureDir, 'wake_probe_spectrum.pdf'), 'ContentType
 exportgraphics(gcf, fullfile(figureDir, 'wake_probe_spectrum.png'), 'Resolution', 300);
 close(gcf);
 
+[localStrouhal, validVectorFraction] = spatialStrouhalMap(vOverUb, xOverD, yOverD, ...
+    cylinderMask, samplingFrequency, cylinderDiameter, bulkVelocity);
+validCells = isfinite(localStrouhal);
+spatialResults = table(xOverD(validCells), yOverD(validCells), ...
+    validVectorFraction(validCells), localStrouhal(validCells), ...
+    'VariableNames', {'X_over_D', 'Y_over_D', 'ValidSampleFraction', 'StrouhalNumber'});
+writetable(spatialResults, fullfile(tableDir, 'cylinder_wake_spatial_strouhal.csv'));
+
+figure('Color', 'w', 'Position', [100 100 920 560]);
+scatter(xOverD(validCells), yOverD(validCells), 58, localStrouhal(validCells), 'filled');
+hold on;
+rectangle('Position', [-1 -0.5 1 1], 'Curvature', [1 1], ...
+    'FaceColor', 'none', 'EdgeColor', 'k', 'LineWidth', 1.2);
+axis equal; grid on; box on; colorbar;
+xlabel('x/D'); ylabel('y/D');
+title(sprintf('Local dominant Strouhal number (%d valid grid points)', nnz(validCells)));
+xlim([-1.2, max(xOverD(:), [], 'omitnan') + 0.2]);
+exportgraphics(gcf, fullfile(figureDir, 'wake_spatial_strouhal.pdf'), 'ContentType', 'vector');
+exportgraphics(gcf, fullfile(figureDir, 'wake_spatial_strouhal.png'), 'Resolution', 300);
+close(gcf);
+
 periodSamples = max(4, round(samplingFrequency / sheddingFrequency));
 filterWindow = max(3, round(0.2 * periodSamples));
 filteredU = movmean(uOverUb, filterWindow, 3, 'omitnan');
@@ -141,9 +162,40 @@ results = table(bulkVelocity, reynoldsNumber, probeX, probeY, sheddingFrequency,
 writetable(results, fullfile(tableDir, 'cylinder_wake_summary.csv'));
 save(fullfile(rootDir, 'data', 'processed', 'cylinder_wake_summary.mat'), ...
     'xOverD', 'yOverD', 'meanU', 'meanV', 'meanSpeed', 'cylinderMask', ...
-    'probeSignal', 'frequency', 'amplitude', 'results');
+    'probeSignal', 'frequency', 'amplitude', 'localStrouhal', ...
+    'validVectorFraction', 'spatialResults', 'results');
 
 fprintf('PSV wake: Re_D = %.0f, probe frequency = %.4f Hz, St = %.4f.\n', ...
     reynoldsNumber, sheddingFrequency, strouhal);
 
+end
+
+function [strouhalMap, validFraction] = spatialStrouhalMap(velocity, xOverD, yOverD, ...
+    cylinderMask, samplingFrequency, cylinderDiameter, bulkVelocity)
+validFraction = mean(isfinite(velocity), 3);
+strouhalMap = NaN(size(xOverD));
+eligible = ~cylinderMask & validFraction >= 0.95;
+frequencyBand = [];
+[rowIndices, columnIndices] = find(eligible);
+for point = 1:numel(rowIndices)
+    row = rowIndices(point);
+    column = columnIndices(point);
+    signal = squeeze(velocity(row, column, :));
+    time = (0:numel(signal)-1).' / samplingFrequency;
+    valid = isfinite(signal);
+    if nnz(valid) < 2
+        continue;
+    end
+    if ~all(valid)
+        signal = interp1(time(valid), signal(valid), time, 'linear', 'extrap');
+    end
+    [frequency, amplitude] = fft_one_sided(signal, samplingFrequency);
+    if isempty(frequencyBand)
+        frequencyBand = frequency >= 0.2 & frequency <= 10;
+    end
+    bandIndices = find(frequencyBand);
+    [~, peakInBand] = max(amplitude(frequencyBand));
+    strouhalMap(row, column) = frequency(bandIndices(peakInBand)) * ...
+        cylinderDiameter / bulkVelocity;
+end
 end

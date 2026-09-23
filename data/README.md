@@ -5,7 +5,8 @@ The repository contains selected inputs and processed exports required by the MA
 - `raw/load_cell/` contains 16 calibration acquisitions used to estimate the force-voltage transfer function.
 - `raw/cylinder_forces/` contains still-water and flowing-water force signals for the cylinder experiment.
 - `raw/cylinder_wake/` contains the PSV measurement used for the mean wake, velocity profiles, spectrum and vorticity analysis.
-- `processed/cfd/` contains selected MATLAB exports of PHOENICS solutions, including laminar and turbulent cases and grid-refinement sequences.
+- `processed/cfd/` contains selected MATLAB exports of PHOENICS solutions, including laminar and turbulent cases, grid-refinement sequences, low-Re iteration exports, and low-Re radial-mesh and spacing studies.
+- `processed/cfd/low_re_grid/` and `processed/cfd/power_y_grid/` provide the datasets used by `run_low_re_sensitivity_analysis.m`.
 - `processed/cylinder_wake_summary.mat` contains summary quantities shared by the wake and force analyses.
 - `external/` contains the attributed velocity profiles used to compare turbulent-pipe simulations with measurements.
 
