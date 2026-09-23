@@ -1,11 +1,12 @@
 # Data inventory
 
-`raw/load_cell/` contains the 16 calibration acquisitions used to estimate the force-voltage transfer function.
+The repository contains selected inputs and processed exports required by the MATLAB analyses.
 
-`raw/cylinder_forces/` contains still-water and flowing-water force signals for the circular cylinder.
+- `raw/load_cell/` contains 16 calibration acquisitions used to estimate the force-voltage transfer function.
+- `raw/cylinder_forces/` contains still-water and flowing-water force signals for the cylinder experiment.
+- `raw/cylinder_wake/` contains the PSV measurement used for the mean wake, velocity profiles, spectrum and vorticity analysis.
+- `processed/cfd/` contains selected MATLAB exports of PHOENICS solutions, including laminar and turbulent cases and grid-refinement sequences.
+- `processed/cylinder_wake_summary.mat` contains summary quantities shared by the wake and force analyses.
+- `external/` contains the attributed velocity profiles used to compare turbulent-pipe simulations with measurements.
 
-`raw/cylinder_wake/` contains the PSV acquisition used to regenerate the mean field, wake profiles, probe spectrum, and vorticity sequence.
-
-`processed/cfd/` contains MATLAB exports of selected PHOENICS solutions, including the retained laminar and turbulent cases and the radial, axial, and combined grid-refinement sequences. They enable post-processing without publishing proprietary solver dumps.
-
-`external/` contains the velocity profiles used in the turbulent-pipe validation. Confirm redistribution rights before publishing the repository.
+PHOENICS solver dumps and software are not included. The files in `external/` retain their source attribution; the MIT License applies to repository code and does not replace the terms attached to third-party data.

@@ -14,18 +14,14 @@ codegen/
 *.out
 *.toc
 *.synctex.gz
-docs/report/main.pdf
 
 # Local build folders
 .build/
 .codex-finalizer/
 tmp/
 
+# Raster previews are generated locally; vector PDFs remain versioned for the report
+/results/figures/*.png
+
 # Microsoft Office temporary files
 ~$*.pptx
-
-# Generated report auxiliaries
-output/pdf/*.aux
-output/pdf/*.log
-output/pdf/*.out
-output/pdf/main.pdf
